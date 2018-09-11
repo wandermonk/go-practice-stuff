@@ -6,33 +6,24 @@ import (
 	"time"
 )
 
-const (
-	rock = iota
-	paper
-	scissors
-)
-
-const (
-	player1 = "A"
-	player2 = "B"
-)
-
 func main() {
 	d := RockPaperScissor()
-	if d == 0 {
-		fmt.Println("TIE")
-	} else if d%2 == 1 {
-		fmt.Println("A WINS")
-	} else if d%2 == 0 {
-		fmt.Println("B WINS")
-	}
+	fmt.Println(d)
 }
 
 //RockPaperScissor returns a result
-func RockPaperScissor() int {
+func RockPaperScissor() string {
+	var result string
 	rand.Seed(time.Now().UnixNano())
 	a := rand.Intn(3)
 	b := rand.Intn(3)
 	d := (3 + a - b) % 3
-	return d
+	if d == 0 {
+		result = "TIE"
+	} else if d%2 == 1 {
+		result = "A WINS"
+	} else if d%2 == 0 {
+		result = "B WINS"
+	}
+	return result
 }
